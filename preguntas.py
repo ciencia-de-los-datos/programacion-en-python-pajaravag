@@ -32,7 +32,7 @@ def pregunta_01():
     col_2 = [pos[1] for pos in data]
     print(col_2)
     for i in col_2:
-        result += i 
+        result += int(i) 
     return result
 
 

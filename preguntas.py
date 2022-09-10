@@ -54,16 +54,12 @@ def pregunta_02():
     data = [line.replace('\n', '') for line in data]
     data = [line.replace('\t', ',') for line in data]
     data = [line.split(',') for line in data]
-    letter_column = []
     times = []
     col_1 = [pos[0] for pos in data]
     for i in list(set(col_1)):
-        times.append(list(set(col_1)).count(i))
-    
-    result = list(zip(list(set(col_1)),times))
+        times.append(col_1.count(i))
 
-
-    return result
+    return sorted(list(zip(list(set(col_1)),times)))
 
 
 def pregunta_03():

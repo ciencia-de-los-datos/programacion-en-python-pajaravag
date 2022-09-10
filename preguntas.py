@@ -22,12 +22,11 @@ def pregunta_01():
     214
 
     """
-    with open('data.csv', 'r') as file:
-        data = file.readlines()
+    data = open("data.csv", "r").readlines()
     data = [line.replace('\n', '') for line in data]
     data = [line.replace('\t', ',') for line in data]
     data = [line.split(',') for line in data]
-    ## Aqui va mi codigo
+
     result = 0.0
     col_2 = [pos[1] for pos in data]
     print(col_2)
@@ -51,7 +50,24 @@ def pregunta_02():
     ]
 
     """
-    return
+    with open('data.csv', 'r') as file:
+        data = file.readlines()
+    #data = open('data.csv', 'r').readlines()
+    data = [line.replace('\n', '') for line in data]
+    data = [line.replace('\t', ',') for line in data]
+    data = [line.split(',') for line in data]
+    print(data)
+    letter_column = []
+    times = []
+    result = []
+    col_1 = [pos[0] for pos in data]
+    #for i in col_1:
+    #    if i not in result:
+    #        letter_column.append(i)
+    print(col_1)
+
+
+    return print(col_1)
 
 
 def pregunta_03():

@@ -14,7 +14,7 @@ Utilice el archivo `data.csv` para resolver las preguntas.
 
 
 
-def pregunta_01(data):
+def pregunta_01():
     """
     Retorne la suma de la segunda columna.
 

@@ -50,9 +50,7 @@ def pregunta_02():
     ]
 
     """
-    with open('data.csv', 'r') as file:
-        data = file.readlines()
-    #data = open('data.csv', 'r').readlines()
+    data = open('data.csv', 'r').readlines()
     data = [line.replace('\n', '') for line in data]
     data = [line.replace('\t', ',') for line in data]
     data = [line.split(',') for line in data]
@@ -61,13 +59,11 @@ def pregunta_02():
     times = []
     result = []
     col_1 = [pos[0] for pos in data]
-    #for i in col_1:
-    #    if i not in result:
-    #        letter_column.append(i)
-    print(col_1)
+    for i in col_1:
+        if i not in result:
+            letter_column.append(i)
 
-
-    return print(col_1)
+    return letter_column
 
 
 def pregunta_03():

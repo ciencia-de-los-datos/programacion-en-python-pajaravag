@@ -56,10 +56,11 @@ def pregunta_02():
     data = [line.split(',') for line in data]
     times = []
     col_1 = [pos[0] for pos in data]
+    result = []
     for i in list(set(col_1)):
         times.append(col_1.count(i))
-
-    return sorted(list(zip(list(set(col_1)),times)))
+    result = sorted(list(zip(list(set(col_1)),times)))
+    return result
 
 
 def pregunta_03():

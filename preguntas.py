@@ -13,7 +13,6 @@ Utilice el archivo `data.csv` para resolver las preguntas.
 """
 with open('data.csv', 'r') as file:
     data = file.readlines()
-    print(data)
 data = [line.replace('\n', '') for line in data]
 data = [line.replace('\t', ',') for line in data]
 data = [line.split(',') for line in data]
@@ -30,6 +29,7 @@ def pregunta_01(data):
     ## Aqui va mi codigo
     result = 0.0
     col_2 = [pos[1] for pos in data]
+    print(col_2)
     for i in col_2:
         result += i 
     return result

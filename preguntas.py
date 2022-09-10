@@ -56,13 +56,14 @@ def pregunta_02():
     data = [line.split(',') for line in data]
     letter_column = []
     times = []
-    result = []
     col_1 = [pos[0] for pos in data]
-    for i in col_1:
-        if i not in letter_column:
-            letter_column.append(i)
+    for i in list(set(col_1)):
+        times.append(list(set(col_1)).count(i))
+    
+    result = list(zip(list(set(col_1)),times))
 
-    return letter_column
+
+    return result
 
 
 def pregunta_03():

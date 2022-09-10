@@ -59,7 +59,7 @@ def pregunta_02():
     for i in list(set(col_1)):
         times.append(col_1.count(i))
     result = sorted(list(zip(list(set(col_1)),times)))
-    print(result)
+
     return result
 
 

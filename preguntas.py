@@ -54,13 +54,12 @@ def pregunta_02():
     data = [line.replace('\n', '') for line in data]
     data = [line.replace('\t', ',') for line in data]
     data = [line.split(',') for line in data]
-    print(data)
     letter_column = []
     times = []
     result = []
     col_1 = [pos[0] for pos in data]
     for i in col_1:
-        if i not in result:
+        if i not in letter_column:
             letter_column.append(i)
 
     return letter_column

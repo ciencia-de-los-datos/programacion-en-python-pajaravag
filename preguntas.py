@@ -29,7 +29,6 @@ def pregunta_01():
 
     result = 0.0
     col_2 = [pos[1] for pos in data]
-    print(col_2)
     for i in col_2:
         result += int(i) 
     return result
@@ -60,6 +59,7 @@ def pregunta_02():
     for i in list(set(col_1)):
         times.append(col_1.count(i))
     result = sorted(list(zip(list(set(col_1)),times)))
+    print(result)
     return result
 
 

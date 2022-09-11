@@ -78,7 +78,17 @@ def pregunta_03():
     ]
 
     """
-    return
+    data = open('data.csv', 'r').readlines()
+    data = [line.replace('\n', '') for line in data]
+    data = [line.replace('\t', ',') for line in data]
+    data = [line.split(',') for line in data]
+    sumas = []
+    for x in list(set([pos[0] for pos in data])):
+        X = [row for row in data if row[0] == x]
+        X = [int(row[1]) for row in X]
+        sumas.append(sum(X))
+    result = sorted(list(zip(list(set([pos[0] for pos in data])), sumas)))
+    return result
 
 
 def pregunta_04():

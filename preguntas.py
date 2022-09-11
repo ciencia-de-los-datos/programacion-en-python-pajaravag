@@ -113,7 +113,18 @@ def pregunta_04():
     ]
 
     """
-    return
+    data = open('data.csv', 'r').readlines()
+    data = [line.replace('\n', '') for line in data]
+    data = [line.replace('\t', ',') for line in data]
+    data = [line.split(',') for line in data]
+    X = [pos[2] for pos in data]
+    X = [mes[5:7] for mes in X]
+    result = []
+    times =[]
+    for i in list(set(X)):
+        times.append(X.count(i))
+    result = sorted(list(zip(list(set(X)),times)))
+    return result
 
 
 def pregunta_05():

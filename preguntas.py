@@ -193,7 +193,7 @@ def pregunta_06():
         X = [int(element.split(':')[1]) for element in flat_list if element.split(':')[0] == value]
         value_min.append(min(X))
         value_max.append(max(X))
-    result = sorted(list(zip(tripletas, value_max, value_min)))
+    result = sorted(list(zip(tripletas, value_min, value_max)))
     return result
 
 

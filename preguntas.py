@@ -142,7 +142,22 @@ def pregunta_05():
     ]
 
     """
-    return
+    data = open('data.csv', 'r').readlines()
+    data = [line.replace('\n', '') for line in data]
+    data = [line.replace('\t', ',') for line in data]
+    data = [line.split(',') for line in data]
+    col_1 = [pos[0] for pos in data]
+    col_2 = [pos[1] for pos in data]
+    value_min = []
+    value_max = []
+    for x in list(set(col_1)):
+        X = [row for row in data if row[0] == x]
+        X = [int(row[1]) for row in X]
+        value_min.append(min(X))
+        value_max.append(max(X))
+
+    result = sorted(list(zip(list(set(col_1)), value_max, value_min)))
+    return result
 
 
 def pregunta_06():
@@ -167,7 +182,19 @@ def pregunta_06():
     ]
 
     """
-    return
+    col5 = open("data.csv", "r").readlines()
+    col5 = [line.replace('\n', '') for line in col5]
+    col5 = [line.split('\t')[4] for line in col5]
+    col5 = [line.split(',') for line in col5]
+    tripletas = set([element.split(':')[0] for row in col5 for element in row])
+    flat_list = [item for sublist in col5 for item in sublist]
+    value_min, value_max, temp_list = [], [], []
+    for value in tripletas:
+        X = [int(element.split(':')[1]) for element in flat_list if element.split(':')[0] == value]
+        value_min.append(min(X))
+        value_max.append(max(X))
+    result = sorted(list(zip(tripletas, value_max, value_min)))
+    return result
 
 
 def pregunta_07():

@@ -390,4 +390,19 @@ def pregunta_12():
     }
 
     """
-    return
+    data = open('data.csv', 'r').readlines()
+    data = [line.replace('\n', '') for line in data]
+    data = [line.replace('\t', ',') for line in data]
+    data = [line.split(',') for line in data]
+    col1 = [pos[0] for pos in data]
+    col5 = open("data.csv", "r").readlines()
+    col5 = [line.replace('\n', '') for line in col5]
+    col5 = [line.split('\t')[4] for line in col5]
+    col5 = [line.split(',') for line in col5]
+    sumas = []
+    for item in sorted(set(col1)):
+        X = [int(element.split(':')[1]) for index in range(len(col5)) for element in col5[index] if item == col1[index]]
+    sumas.append(sum(X))
+
+    result = dict(zip(sorted(set(col1)), sumas))
+    return result

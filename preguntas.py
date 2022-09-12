@@ -265,7 +265,7 @@ def pregunta_08():
     temp_list = []
     for number in set(col_2):
         X = [col_1[pos] for pos in range(len(col_1)) if number == col_2[pos]]
-    temp_list.append(list(set(X)))
+    temp_list.append(sorted(list(set(X))))
     result = sorted(list(zip(set(col_2), temp_list)))
     return result
 

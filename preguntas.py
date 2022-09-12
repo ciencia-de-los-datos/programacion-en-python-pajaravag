@@ -290,7 +290,17 @@ def pregunta_09():
     }
 
     """
-    return
+    col5 = open("data.csv", "r").readlines()
+    col5 = [line.replace('\n', '') for line in col5]
+    col5 = [line.split('\t')[4] for line in col5]
+    col5 = [line.split(',') for line in col5]
+    tripletas = sorted(set([element.split(':')[0] for row in col5 for element in row]))
+    values = [item.split(':')[0] for sublist in col5 for item in sublist]
+    times = []
+    for element in tripletas:
+        times.append(values.count(element))
+    result = dict(zip(tripletas, times))
+    return result
 
 
 def pregunta_10():

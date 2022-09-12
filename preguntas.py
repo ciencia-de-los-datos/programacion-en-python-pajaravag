@@ -353,9 +353,26 @@ def pregunta_11():
         "g": 35,
     }
 
-
     """
-    return
+    data = open("data.csv", "r").readlines()
+
+    col4 = [line.replace('\n', '') for line in data]
+    data = [line.replace('\n', '') for line in data]
+    data = [line.replace('\t', ',') for line in data]
+    data = [line.split(',') for line in data]
+    col2 = [pos[1] for pos in data]
+    col4 = [line.split('\t')[3] for line in col4]
+    col4 = [line.split(',') for line in col4]
+    flat_list = [item for sublist in col4 for item in sublist]
+    letters = sorted(set(flat_list))
+
+    X = []
+    sumas = []
+    for letter in letters:
+        X = [int(col2[index]) for index in range(len(col4)) for item in col4[index] if letter == item]
+    sumas.append(sum(X))
+    result = dict(zip(letters, sumas))
+    return result
 
 
 def pregunta_12():

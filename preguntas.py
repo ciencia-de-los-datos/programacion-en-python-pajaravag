@@ -318,10 +318,23 @@ def pregunta_10():
         ("E", 2, 3),
         ("E", 3, 3),
     ]
-
-
     """
-    return
+    data = open("data.csv", "r").readlines()
+    col5 = [line.replace('\n', '') for line in data]
+    col4 = [line.replace('\n', '') for line in data]
+    data = [line.replace('\n', '') for line in data]
+    data = [line.replace('\t', ',') for line in data]
+    data = [line.split(',') for line in data]
+    col_1 = [pos[0] for pos in data]
+
+    col5 = [line.split('\t')[4] for line in col5]
+    col4 = [line.split('\t')[3] for line in col4]
+    col5 = [line.split(',') for line in col5]
+    col4 = [line.split(',') for line in col4]
+    num_col4 = [len(element) for element in col4]
+    num_col5 = [len(element) for element in col5]
+    result = list(zip(col_1, num_col4, num_col5))
+    return result
 
 
 def pregunta_11():

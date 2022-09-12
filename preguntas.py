@@ -255,7 +255,19 @@ def pregunta_08():
     ]
 
     """
-    return
+    data = open('data.csv', 'r').readlines()
+    data = [line.replace('\n', '') for line in data]
+    data = [line.replace('\t', ',') for line in data]
+    data = [line.split(',') for line in data]
+    col_1 = [pos[0] for pos in data]
+    col_2 = [pos[1] for pos in data]
+    col_2 = [int(element) for element in col_2]
+    temp_list = []
+    for number in set(col_2):
+        X = [col_1[pos] for pos in range(len(col_1)) if number == col_2[pos]]
+    temp_list.append(list(set(X)))
+    result = sorted(list(zip(set(col_2), temp_list)))
+    return result
 
 
 def pregunta_09():

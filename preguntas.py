@@ -391,12 +391,11 @@ def pregunta_12():
 
     """
     data = open('data.csv', 'r').readlines()
+    col5 = [line.replace('\n', '') for line in data]
     data = [line.replace('\n', '') for line in data]
     data = [line.replace('\t', ',') for line in data]
     data = [line.split(',') for line in data]
     col1 = [pos[0] for pos in data]
-    col5 = open("data.csv", "r").readlines()
-    col5 = [line.replace('\n', '') for line in col5]
     col5 = [line.split('\t')[4] for line in col5]
     col5 = [line.split(',') for line in col5]
     sumas = []

@@ -13,6 +13,7 @@ Utilice el archivo `data.csv` para resolver las preguntas.
 """
 
 
+
 def pregunta_01():
     """
     Retorne la suma de la segunda columna.
@@ -21,7 +22,16 @@ def pregunta_01():
     214
 
     """
-    return
+    data = open("data.csv", "r").readlines()
+    data = [line.replace('\n', '') for line in data]
+    data = [line.replace('\t', ',') for line in data]
+    data = [line.split(',') for line in data]
+
+    result = 0.0
+    col_2 = [pos[1] for pos in data]
+    for i in col_2:
+        result += int(i) 
+    return result
 
 
 def pregunta_02():
@@ -39,7 +49,18 @@ def pregunta_02():
     ]
 
     """
-    return
+    data = open('data.csv', 'r').readlines()
+    data = [line.replace('\n', '') for line in data]
+    data = [line.replace('\t', ',') for line in data]
+    data = [line.split(',') for line in data]
+    times = []
+    col_1 = [pos[0] for pos in data]
+    result = []
+    for i in list(set(col_1)):
+        times.append(col_1.count(i))
+    result = sorted(list(zip(list(set(col_1)),times)))
+
+    return result
 
 
 def pregunta_03():
@@ -57,7 +78,17 @@ def pregunta_03():
     ]
 
     """
-    return
+    data = open('data.csv', 'r').readlines()
+    data = [line.replace('\n', '') for line in data]
+    data = [line.replace('\t', ',') for line in data]
+    data = [line.split(',') for line in data]
+    sumas = []
+    for x in list(set([pos[0] for pos in data])):
+        X = [row for row in data if row[0] == x]
+        X = [int(row[1]) for row in X]
+        sumas.append(sum(X))
+    result = sorted(list(zip(list(set([pos[0] for pos in data])), sumas)))
+    return result
 
 
 def pregunta_04():
@@ -82,7 +113,18 @@ def pregunta_04():
     ]
 
     """
-    return
+    data = open('data.csv', 'r').readlines()
+    data = [line.replace('\n', '') for line in data]
+    data = [line.replace('\t', ',') for line in data]
+    data = [line.split(',') for line in data]
+    X = [pos[2] for pos in data]
+    X = [mes[5:7] for mes in X]
+    result = []
+    times =[]
+    for i in list(set(X)):
+        times.append(X.count(i))
+    result = sorted(list(zip(list(set(X)),times)))
+    return result
 
 
 def pregunta_05():
@@ -100,7 +142,22 @@ def pregunta_05():
     ]
 
     """
-    return
+    data = open('data.csv', 'r').readlines()
+    data = [line.replace('\n', '') for line in data]
+    data = [line.replace('\t', ',') for line in data]
+    data = [line.split(',') for line in data]
+    col_1 = [pos[0] for pos in data]
+    col_2 = [pos[1] for pos in data]
+    value_min = []
+    value_max = []
+    for x in list(set(col_1)):
+        X = [row for row in data if row[0] == x]
+        X = [int(row[1]) for row in X]
+        value_min.append(min(X))
+        value_max.append(max(X))
+
+    result = sorted(list(zip(list(set(col_1)), value_max, value_min)))
+    return result
 
 
 def pregunta_06():
@@ -125,7 +182,19 @@ def pregunta_06():
     ]
 
     """
-    return
+    col5 = open("data.csv", "r").readlines()
+    col5 = [line.replace('\n', '') for line in col5]
+    col5 = [line.split('\t')[4] for line in col5]
+    col5 = [line.split(',') for line in col5]
+    tripletas = set([element.split(':')[0] for row in col5 for element in row])
+    flat_list = [item for sublist in col5 for item in sublist]
+    value_min, value_max, temp_list = [], [], []
+    for value in tripletas:
+        X = [int(element.split(':')[1]) for element in flat_list if element.split(':')[0] == value]
+        value_min.append(min(X))
+        value_max.append(max(X))
+    result = sorted(list(zip(tripletas, value_min, value_max)))
+    return result
 
 
 def pregunta_07():
@@ -149,7 +218,19 @@ def pregunta_07():
     ]
 
     """
-    return
+    data = open('data.csv', 'r').readlines()
+    data = [line.replace('\n', '') for line in data]
+    data = [line.replace('\t', ',') for line in data]
+    data = [line.split(',') for line in data]
+    col_1 = [pos[0] for pos in data]
+    col_2 = [pos[1] for pos in data]
+    col_2 = [int(element) for element in col_2]
+    temp_list = []
+    for number in set(col_2):
+        X = [col_1[pos] for pos in range(len(col_1)) if number == col_2[pos]]
+        temp_list.append(X)
+    result = sorted(list(zip(set(col_2), temp_list)))
+    return result
 
 
 def pregunta_08():
@@ -174,7 +255,19 @@ def pregunta_08():
     ]
 
     """
-    return
+    data = open('data.csv', 'r').readlines()
+    data = [line.replace('\n', '') for line in data]
+    data = [line.replace('\t', ',') for line in data]
+    data = [line.split(',') for line in data]
+    col_1 = [pos[0] for pos in data]
+    col_2 = [pos[1] for pos in data]
+    col_2 = [int(element) for element in col_2]
+    temp_list = []
+    for number in set(col_2):
+        X = [col_1[pos] for pos in range(len(col_1)) if number == col_2[pos]]
+        temp_list.append(sorted(list(set(X))))
+    result = sorted(list(zip(set(col_2), temp_list)))
+    return result
 
 
 def pregunta_09():
@@ -197,7 +290,17 @@ def pregunta_09():
     }
 
     """
-    return
+    col5 = open("data.csv", "r").readlines()
+    col5 = [line.replace('\n', '') for line in col5]
+    col5 = [line.split('\t')[4] for line in col5]
+    col5 = [line.split(',') for line in col5]
+    tripletas = sorted(set([element.split(':')[0] for row in col5 for element in row]))
+    values = [item.split(':')[0] for sublist in col5 for item in sublist]
+    times = []
+    for element in tripletas:
+        times.append(values.count(element))
+    result = dict(zip(tripletas, times))
+    return result
 
 
 def pregunta_10():
@@ -215,10 +318,23 @@ def pregunta_10():
         ("E", 2, 3),
         ("E", 3, 3),
     ]
-
-
     """
-    return
+    data = open("data.csv", "r").readlines()
+    col5 = [line.replace('\n', '') for line in data]
+    col4 = [line.replace('\n', '') for line in data]
+    data = [line.replace('\n', '') for line in data]
+    data = [line.replace('\t', ',') for line in data]
+    data = [line.split(',') for line in data]
+    col_1 = [pos[0] for pos in data]
+
+    col5 = [line.split('\t')[4] for line in col5]
+    col4 = [line.split('\t')[3] for line in col4]
+    col5 = [line.split(',') for line in col5]
+    col4 = [line.split(',') for line in col4]
+    num_col4 = [len(element) for element in col4]
+    num_col5 = [len(element) for element in col5]
+    result = list(zip(col_1, num_col4, num_col5))
+    return result
 
 
 def pregunta_11():
@@ -237,9 +353,26 @@ def pregunta_11():
         "g": 35,
     }
 
-
     """
-    return
+    data = open("data.csv", "r").readlines()
+
+    col4 = [line.replace('\n', '') for line in data]
+    data = [line.replace('\n', '') for line in data]
+    data = [line.replace('\t', ',') for line in data]
+    data = [line.split(',') for line in data]
+    col2 = [pos[1] for pos in data]
+    col4 = [line.split('\t')[3] for line in col4]
+    col4 = [line.split(',') for line in col4]
+    flat_list = [item for sublist in col4 for item in sublist]
+    letters = sorted(set(flat_list))
+
+    X = []
+    sumas = []
+    for letter in letters:
+        X = [int(col2[index]) for index in range(len(col4)) for item in col4[index] if letter == item]
+        sumas.append(sum(X))
+    result = dict(zip(letters, sumas))
+    return result
 
 
 def pregunta_12():
@@ -257,4 +390,18 @@ def pregunta_12():
     }
 
     """
-    return
+    data = open('data.csv', 'r').readlines()
+    col5 = [line.replace('\n', '') for line in data]
+    data = [line.replace('\n', '') for line in data]
+    data = [line.replace('\t', ',') for line in data]
+    data = [line.split(',') for line in data]
+    col1 = [pos[0] for pos in data]
+    col5 = [line.split('\t')[4] for line in col5]
+    col5 = [line.split(',') for line in col5]
+    sumas = []
+    for item in sorted(set(col1)):
+        X = [int(element.split(':')[1]) for index in range(len(col5)) for element in col5[index] if item == col1[index]]
+        sumas.append(sum(X))
+
+    result = dict(zip(sorted(set(col1)), sumas))
+    return result

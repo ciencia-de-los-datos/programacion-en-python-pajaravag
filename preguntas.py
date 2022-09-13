@@ -370,7 +370,7 @@ def pregunta_11():
     sumas = []
     for letter in letters:
         X = [int(col2[index]) for index in range(len(col4)) for item in col4[index] if letter == item]
-    sumas.append(sum(X))
+        sumas.append(sum(X))
     result = dict(zip(letters, sumas))
     return result
 
@@ -401,7 +401,7 @@ def pregunta_12():
     sumas = []
     for item in sorted(set(col1)):
         X = [int(element.split(':')[1]) for index in range(len(col5)) for element in col5[index] if item == col1[index]]
-    sumas.append(sum(X))
+        sumas.append(sum(X))
 
     result = dict(zip(sorted(set(col1)), sumas))
     return result
